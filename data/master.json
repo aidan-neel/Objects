@@ -1,0 +1,34 @@
+{
+    "collections": {
+        "posts": {
+            "indexes": [
+                {
+                    "field": "user_id",
+                    "unique": false
+                },
+                {
+                    "field": "title",
+                    "unique": false
+                }
+            ],
+            "last_id": 5,
+            "path": "posts",
+            "schema": "schema.json"
+        },
+        "users": {
+            "indexes": [
+                {
+                    "field": "email",
+                    "unique": true
+                },
+                {
+                    "field": "age",
+                    "unique": false
+                }
+            ],
+            "last_id": 13,
+            "path": "users",
+            "schema": "schema.json"
+        }
+    }
+}

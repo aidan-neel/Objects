@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Schema definition for DBMS collection schemas",
+    "type": "object",
+
+    "allOf": [{ "$ref": "#/$defs/idField" }],
+
+    "required": ["type", "properties"],
+
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["object"]
+        },
+        "required": {
+            "type": "array",
+            "items": { "type": "string" },
+            "uniqueItems": true
+        },
+        "properties": {
+            "type": "object",
+            "minProperties": 0,
+            "propertyNames": {
+                "not": {
+                    "const": "id"
+                }
+            },
+            "additionalProperties": {
+                "type": "object",
+                "required": ["type"],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "object",
+                            "array"
+                        ]
+                    },
+                    "default": {},
+                    "unique": { "type": "boolean" },
+                    "index": { "type": "boolean" },
+                    "nullable": { "type": "boolean" },
+                    "autoIncrement": { "type": "boolean" }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+
+    "$defs": {
+        "idField": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "type": { "const": "number" },
+                                "autoIncrement": { "const": true },
+                                "unique": { "const": true }
+                            },
+                            "required": ["type", "autoIncrement", "unique"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["id"]
+                }
+            },
+            "required": ["properties"]
+        }
+    },
+
+    "additionalProperties": false
+}

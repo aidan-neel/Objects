@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "required": ["id", "email", "password"],
+    "properties": {
+        "email": { "type": "string", "unique": true, "index": true },
+        "password": { "type": "string" },
+        "age": { "type": "number", "default": 18 },
+        "username": {
+            "type": "string",
+            "nullable": true,
+            "default": "LeBron James"
+        }
+    }
+}

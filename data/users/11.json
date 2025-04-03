@@ -1,0 +1,6 @@
+{
+    "age": 30,
+    "email": "alice@example.com",
+    "id": 11,
+    "password": "hashed123"
+}
